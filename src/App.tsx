@@ -1,12 +1,14 @@
-import './App.css'
+import { Layout } from './components/layout/Layout';
 
 function App() {
 
   return (
-    <div>
-      <h1>Start project</h1>
-    </div>
+    <Layout>
+      <h1>content page</h1>
+    </Layout>
   )
+
+  
 }
 
 export default App
