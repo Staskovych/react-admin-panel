@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { LayoutDashboard } from "lucide-react";
 import { ListTodo } from 'lucide-react';
 import { Box } from 'lucide-react';
@@ -96,10 +97,10 @@ export function AppSidebar() {
             <div key={group.title} className="space-y-2">
                 <p className="text-slate-300 text-xs">{group.title}</p>
                 {group.items.map((item) => (
-                    <a key={item.url} href={item.url} className="flex items-center gap-2 text-slate-100">
+                    <NavLink to={item.url} end={item.url === '/'} key={item.url} className="flex items-center gap-2 text-slate-100">
                         <item.icon className="w-4 h-4" />
                         {item.title}
-                    </a>
+                    </NavLink>
                 ))}
             </div>
         ))}
