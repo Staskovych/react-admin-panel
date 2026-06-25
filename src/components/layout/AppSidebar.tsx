@@ -23,6 +23,10 @@ type NavGroup = {
     items: NavItem[];
 }
 
+type AppSidebarProps = {
+    isCollapsed: boolean;
+}
+
 const navGroups: NavGroup[] = [
     {
         title: 'General',
@@ -91,12 +95,12 @@ const navGroups: NavGroup[] = [
     }
 ]
 
-export function AppSidebar() {
+export function AppSidebar( { isCollapsed }: AppSidebarProps) {
     return (
         <nav className="p-4 space-y-10">
         {navGroups.map((group) => (
             <div key={group.title} className="space-y-2">
-                <p className="text-slate-300 text-xs">{group.title}</p>
+                {!isCollapsed && <p className="text-slate-300 text-xs">{group.title}</p>}
                     {group.items.map((item) => (
                         <NavLink 
                             to={item.url} 
@@ -110,7 +114,7 @@ export function AppSidebar() {
                             }
                         >
                             <item.icon className="w-4 h-4" />
-                            {item.title}
+                            {!isCollapsed && item.title}
                         </NavLink>
                     ))}
             </div>
