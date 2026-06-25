@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard } from "lucide-react";
 import { ListTodo } from 'lucide-react';
@@ -96,14 +97,24 @@ export function AppSidebar() {
         {navGroups.map((group) => (
             <div key={group.title} className="space-y-2">
                 <p className="text-slate-300 text-xs">{group.title}</p>
-                {group.items.map((item) => (
-                    <NavLink to={item.url} end={item.url === '/'} key={item.url} className="flex items-center gap-2 text-slate-100">
-                        <item.icon className="w-4 h-4" />
-                        {item.title}
-                    </NavLink>
-                ))}
+                    {group.items.map((item) => (
+                        <NavLink 
+                            to={item.url} 
+                            end={item.url === '/'} 
+                            key={item.url}
+                            className={({ isActive }) => 
+                               cn(
+                                "flex items-center gap-2 text-slate-100 rounded-md px-2 py-1.5",
+                                isActive ? 'bg-slate-800' : 'hover:bg-slate-800/80'
+                               ) 
+                            }
+                        >
+                            <item.icon className="w-4 h-4" />
+                            {item.title}
+                        </NavLink>
+                    ))}
             </div>
         ))}
         </nav>
-    )
+    );
 }
